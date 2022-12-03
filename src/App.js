@@ -43,9 +43,10 @@ function App() {
       <h1>Pending Requests</h1>
       <div className="notifStack">
         {
-          notifs.map(notif => {
-            return (<NotifCard notifTitle={notif.title} notifMessage={notif.message} />)
-          })
+          // notifs.map(notif => {
+          //   return (<NotifCard notifTitle={notif.title} notifMessage={notif.message} />)
+          // })
+          <NotifCard notifTitle="this is the notificaiton title" notifMessage="this is notif message" />
         }
       </div>
     </div>

@@ -10,7 +10,7 @@ export const NotifCard = (props) => {
         <h3>{props.notifTitle}</h3>
         <p>{props.notifMessage}</p>
       </div>
-      <div>
+      <div className='acceptIcons'>
         <FcApproval className='icon'/>
         <FcHighPriority className='icon'/>
       </div>

@@ -7,9 +7,10 @@ const Navbar = () => {
         <>
             <nav className="p-5 border-b-2 flex flex-row justify-between items-center">
                 <NavLink to="/">
-                    <h1 className="py-4 px-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-300 whitespace-nowrap">
+                    {/* <h1 className="py-4 px-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-300 whitespace-nowrap">
                         HealDeSci
-                    </h1>
+                    </h1> */}
+                    <img className=" max-h-12 rounded-md" src="logo.png" alt="MeData" />
                 </NavLink>
                 <div className="flex flex-row items-center">
                     <NavLink className="mr-6 p-6 font-bold" to="/">

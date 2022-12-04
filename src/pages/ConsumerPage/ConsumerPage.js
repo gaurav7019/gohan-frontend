@@ -1,7 +1,7 @@
 import React from "react"
 import Navbar from "../../components/NavBar/Navbar"
 import { Form, Button, useNotification } from "web3uikit"
-import { useMoralis, useWeb3Contract } from "react-moralis"
+import { /*useMoralis*/ useWeb3Contract } from "react-moralis"
 import ContractABI from "../../ABIs/ContractABI.json"
 
 const ConsumerPage = () => {

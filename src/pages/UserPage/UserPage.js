@@ -1,15 +1,61 @@
 import React from "react"
 import Navbar from "../../components/NavBar/Navbar"
 import { NotifCard } from "../../components/NotifCard/NotifCard"
-import { useState, useEffect } from "react"
-import { useMoralis } from "react-moralis"
+import { useState /*useEffect*/ } from "react"
+import { useMoralis, useWeb3Contract } from "react-moralis"
 import mockNotifs from "../../Mock_Data/Notification.json"
-const PushAPI = require("@pushprotocol/restapi")
+import ContractABI from "../../ABIs/ContractABI.json"
+import { useNotification } from "web3uikit"
+
+// const PushAPI = require("@pushprotocol/restapi")
 
 const UserPage = () => {
+    const CONTRACT_ADDRESS = "0x47F5Ce3e72622cf03B15e6A50d325Cc6a71762c2"
+
     const { isWeb3Enabled, account } = useMoralis()
-    const [notifs, setNotifs] = useState([])
-    const notifications = mockNotifs
+    const { runContractFunction } = useWeb3Contract()
+    const { dispatch } = useNotification()
+
+    const [notifications, setNotifs] = useState(mockNotifs)
+
+    const removeNotification = (clickedIdentifier) => {
+        console.log(`clickedIdentifier: ${clickedIdentifier}`)
+        const newNotifications = notifications.filter((element) => {
+            console.log(element)
+            return element.identifier != clickedIdentifier
+        })
+
+        setNotifs(newNotifications)
+    }
+
+    const approveNotification = async () => {
+        const Options = {
+            abi: ContractABI,
+            contractAddress: CONTRACT_ADDRESS,
+            functionName: "responseBack"
+            params: {
+                _requestor: ,
+                data: ,
+            }
+        }
+
+
+        await runContractFunction({
+            params: Options,
+            onSuccess: (tx) => handleResponseBack(tx),
+            onError: (error) => console.log(error)
+        })
+
+        const handleResponseBack = (tx) => {
+            tx.wait(1)
+            dispatch({
+                type: "success",
+                title: "Success",
+                message: "Notification sent",
+                position: "topR",
+            })
+        }
+    }
 
     // const Alerts = () => {
     //     useEffect(() => {
@@ -55,6 +101,10 @@ const UserPage = () => {
                                 maxVal={element.maxVal}
                                 FirstOperation={element.FirstOperation}
                                 SecondOperation={element.SecondOperation}
+                                removeNotification={removeNotification}
+                                approveNotification={approveNotification}
+                                identifier={element.identifier}
+                                key={index}
                             />
                         )
                     })

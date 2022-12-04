@@ -5,7 +5,8 @@
         "minVal": 50,
         "maxVal": 140,
         "FirstOperation": "MAvg",
-        "SecondOperation": "Min"
+        "SecondOperation": "Min",
+        "zkp": true
     },
     {
         "identifier": 1,
@@ -13,7 +14,8 @@
         "minVal": 500,
         "maxVal": 14000,
         "FirstOperation": "MAvg",
-        "SecondOperation": "Min"
+        "SecondOperation": "Min",
+        "zkp": true
     },
     {
         "identifier": 2,
@@ -21,7 +23,8 @@
         "minVal": 50,
         "maxVal": 140,
         "FirstOperation": "MAvg",
-        "SecondOperation": "Min"
+        "SecondOperation": "Min",
+        "zkp": true
     },
     {
         "identifier": 3,
@@ -29,7 +32,8 @@
         "minVal": 60,
         "maxVal": 120,
         "FirstOperation": "MAvg",
-        "SecondOperation": "Min"
+        "SecondOperation": "Min",
+        "zkp": true
     },
     {
         "identifier": 4,
@@ -37,6 +41,7 @@
         "minVal": 70,
         "maxVal": 130,
         "FirstOperation": "MAvg",
-        "SecondOperation": "Min"
+        "SecondOperation": "Min",
+        "zkp": true
     }
 ]

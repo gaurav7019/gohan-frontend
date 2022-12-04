@@ -19,31 +19,37 @@ const UserPage = () => {
     const [notifications, setNotifs] = useState(mockNotifs)
 
     const removeNotification = (clickedIdentifier) => {
-        console.log(`clickedIdentifier: ${clickedIdentifier}`)
         const newNotifications = notifications.filter((element) => {
             console.log(element)
-            return element.identifier != clickedIdentifier
+            return element.identifier !== clickedIdentifier
         })
 
         setNotifs(newNotifications)
     }
 
-    const approveNotification = async () => {
+    const approveNotification = async (clickedIdentifier) => {
+        const newNotifications = notifications.find((element) => {
+            return element.identifier === clickedIdentifier
+        })
+        console.log(newNotifications)
+        const zkpObj = { ...newNotifications, zkp: true }
+        console.log(zkpObj)
+        console.log(JSON.stringify(zkpObj))
+
         const Options = {
             abi: ContractABI,
             contractAddress: CONTRACT_ADDRESS,
-            functionName: "responseBack"
+            functionName: "responseBack",
             params: {
-                _requestor: ,
-                data: ,
-            }
+                _requestor: "0x47F5Ce3e72622cf03B15e6A50d325Cc6a71762c2",
+                data: JSON.stringify(zkpObj),
+            },
         }
-
 
         await runContractFunction({
             params: Options,
             onSuccess: (tx) => handleResponseBack(tx),
-            onError: (error) => console.log(error)
+            onError: (error) => console.log(error),
         })
 
         const handleResponseBack = (tx) => {
